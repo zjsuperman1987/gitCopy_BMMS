@@ -5,7 +5,7 @@ var semver = require('semver')
 var packageConfig = require('../package.json')
 
 function exec(cmd) {
-	return require('child_process').exeSync(cmd).toString().trim()
+	return require('child_process').execSync(cmd).toString().trim()
 }
 
 var versionRequirements = [
@@ -33,7 +33,7 @@ module.exports = function() {
 		}
 	}
 
-	if(warings.length) {
+	if(warnings.length) {
 		console.log('')
 		console.log(chalk.yellw('To use this template, you must update following to modules:'))
 		console.log()

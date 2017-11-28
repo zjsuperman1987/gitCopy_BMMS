@@ -3,7 +3,7 @@ var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
 var glob = require('glob')
-var entries = getEntry('./src/module/**/*.js')	//获得js文件
+var entries = getEntry('./src/modules/**/*.js')	//获得js文件
 
 function resolve(dir) {
 	return path.join(__dirname, '..', dir)
@@ -17,13 +17,14 @@ function getEntry(globPath) {
 		basename = path.basename(entry, path.extname(entry));
 		tmp = entry.split('/').splice(-3)
 		pathname = tmp.splice(0,1) + '/' + basename	//正确输出js和html路径
+		console.log('llllllllllllllllllllllllllllllllllllllllllll')
 		console.log(pathname)
 		entries[pathname] = entry;
 	})
-
+	console.log('kkkkkkkkkkkkkkkkkkkkkkkkkkkkk')
+	// console.log(entries);
 	return entries;
 }
-
 module.exports = {
 	entry: entries,
 	output: {
@@ -72,7 +73,7 @@ module.exports = {
 			},
 			{
 				test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-				loader: 'url-loader'
+				loader: 'url-loader',
 				query: {
 					limit: 10000,
 					name: utils.assetsPath('fonts/[name].[hash:7].[ext]')

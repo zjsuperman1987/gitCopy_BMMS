@@ -1,6 +1,6 @@
 require('./check-version')()
 
-var config = reuire('../config')
+var config = require('../config')
 if(!process.env.NODE_ENV) {
 	process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
 	process.noDeprecation = true;
@@ -70,13 +70,13 @@ var webpackConfig = process.env.NODE_ENV === 'testing'
  	console.log('> Listening at ' + uri + '\n')
  })
 
- module.exports = app.listen(port.function(err)) {
+ module.exports = app.listen(port,function(err){
  	if(err) {
  		console.log(err)
  		return
  	}
  	// when env is testing don't need open it
- 	if(autoOpenBrowser && process.env.NODE_ENV !=== 'testing') {
+ 	if(autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
  		opn(uri)
  	}
- }
+ })
